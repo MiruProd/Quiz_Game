@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { authGuard, guestGuard } from './guards/auth.guard';
+import { questionsResolver } from './guards/questions.resolver';
 
 export const routes: Routes = [
   {
@@ -25,6 +26,7 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/game-play/game-play').then((m) => m.GamePlay),
     title: 'Игра',
     canActivate: [authGuard],
+    resolve: { questions: questionsResolver },
   },
   {
     path: 'results',
