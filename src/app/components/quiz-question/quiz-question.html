@@ -1,0 +1,18 @@
+<div class="question-wrapper">
+  <h2 class="question-text">{{ question().text }}</h2>
+  <div class="options-grid">
+    @for (option of question().options; track $index) {
+      <button
+        type="button"
+        class="option-btn"
+        [class.correct]="isAnswered() && $index === question().correctAnswer"
+        [class.incorrect]="isAnswered() && selectedAnswerIndex() === $index && $index !== question().correctAnswer"
+        [disabled]="isAnswered()"
+        (click)="onOptionClick($index)"
+      >
+        <span class="option-prefix">{{ ['A', 'B', 'C', 'D'][$index] }}</span>
+        <span class="option-text">{{ option }}</span>
+      </button>
+    }
+  </div>
+</div>

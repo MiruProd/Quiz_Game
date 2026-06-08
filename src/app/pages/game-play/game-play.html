@@ -1,1 +1,37 @@
-<p>game-play works!</p>
+<div class="game-play-page">
+  <div class="game-container">
+    <header class="game-header">
+      <div class="progress-info">
+        <span class="step-text">Вопрос {{ currentQuestionIndex() + 1 }} из {{ totalQuestions }}</span>
+        <div class="progress-track">
+          <div class="progress-fill" [style.width.%]="progressPercentage()"></div>
+        </div>
+      </div>
+
+      <div 
+        class="timer-circle" 
+        [class.timer-warn]="remainingSeconds() <= 10 && remainingSeconds() > 4"
+        [class.timer-critical]="remainingSeconds() <= 4"
+      >
+        <span class="timer-value">{{ remainingSeconds() }}</span>
+      </div>
+    </header>
+
+    <main class="question-section">
+      <app-quiz-question
+        [question]="currentQuestion()"
+        [selectedAnswerIndex]="selectedAnswerIndex()"
+        [isAnswered]="isAnswered()"
+        (selectAnswer)="onSelectAnswer($event)"
+      ></app-quiz-question>
+    </main>
+
+    <footer class="game-actions">
+      @if (isAnswered()) {
+        <button (click)="onNextQuestion()" class="btn btn-primary next-btn">
+          {{ currentQuestionIndex() + 1 === totalQuestions ? 'Завершить викторину' : 'Следующий вопрос' }}
+        </button>
+      }
+    </footer>
+  </div>
+</div>

@@ -1,0 +1,159 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.game-play-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 6rem);
+
+  @include tablet {
+    padding: 1.5rem 1rem;
+  }
+}
+
+.game-container {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-lg;
+  box-shadow: $shadow-lg;
+  padding: 2.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  @include phone {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+
+  @include phone {
+    gap: 1rem;
+  }
+}
+
+.progress-info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.step-text {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.progress-track {
+  height: 8px;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--color-primary);
+  transition: width $transition-normal;
+}
+
+/* Круговой таймер (зеленый по умолчанию) */
+.timer-circle {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  border: 3px solid var(--color-timer-normal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px color-mix(in srgb, var(--color-timer-normal) 15%, transparent);
+  transition: border-color $transition-fast, box-shadow $transition-fast;
+  flex-shrink: 0;
+
+  .timer-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-timer-normal);
+    transition: color $transition-fast;
+  }
+
+  /* Желтое состояние (осталось 10 секунд и менее) */
+  &.timer-warn {
+    border-color: var(--color-timer-warn);
+    box-shadow: 0 0 10px color-mix(in srgb, var(--color-timer-warn) 25%, transparent);
+
+    .timer-value {
+      color: var(--color-timer-warn);
+    }
+  }
+
+  /* Красное пульсирующее состояние (осталось 4 секунды и менее) */
+  &.timer-critical {
+    border-color: var(--color-timer-critical);
+    box-shadow: 0 0 12px color-mix(in srgb, var(--color-timer-critical) 40%, transparent);
+    animation: pulseTimer 1s infinite alternate;
+
+    .timer-value {
+      color: var(--color-timer-critical);
+    }
+  }
+}
+
+@keyframes pulseTimer {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+.question-section {
+  width: 100%;
+}
+
+.game-actions {
+  display: flex;
+  justify-content: flex-end;
+  min-height: 3.5rem;
+
+  @include phone {
+    justify-content: stretch;
+  }
+}
+
+.next-btn {
+  width: auto;
+  min-width: 200px;
+  animation: fadeInUp 0.2s ease-out forwards;
+
+  @include phone {
+    width: 100%;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
