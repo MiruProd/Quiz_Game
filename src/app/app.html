@@ -1,0 +1,9 @@
+<router-outlet />
+
+<button (click)="toggleTheme()" class="theme-toggle-btn" aria-label="Переключение темы">
+  <span 
+    class="theme-icon" 
+    [class.icon-moon]="currentTheme() === 'light'" 
+    [class.icon-sun]="currentTheme() === 'dark'"
+  ></span>
+</button>

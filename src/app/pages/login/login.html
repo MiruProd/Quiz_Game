@@ -1,0 +1,88 @@
+<div class="login-page">
+  <app-bg-decorations />
+  <aside class="promo-section">
+    <div class="promo-content">
+      <div class="promo-logo">
+        <span class="logo-text">Quiz Game</span>
+      </div>
+
+      <h1 class="promo-title">Проверь свои знания!</h1>
+
+      <p class="promo-subtitle">
+        Выбирай интересные категории, отвечай на вопросы на время и поднимайся на верхние строчки
+        таблицы лидеров.
+      </p>
+    </div>
+  </aside>
+
+  <main class="auth-section">
+    <div class="login-card">
+      <div class="login-header">
+        <h2 class="login-title">
+          {{ isRegisterMode() ? 'Регистрация' : 'Вход в аккаунт' }}
+        </h2>
+        <p class="login-subtitle">
+          {{ isRegisterMode() ? 'Создайте никнейм, чтобы начать соревнование' : 'Авторизуйтесь, чтобы начать игру и соревноваться с другими игроками' }}
+        </p>
+      </div>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+        <div class="form-group">
+          <label for="username" class="form-label">Ваше имя (никнейм)</label>
+          <input
+            type="text"
+            id="username"
+            formControlName="username"
+            class="form-input"
+            placeholder="Например, Player_1"
+            autocomplete="off"
+            [class.is-invalid]="
+              (loginForm.get('username')?.touched && loginForm.get('username')?.invalid) || authError()
+            "
+          />
+
+          @if (loginForm.get('username')?.touched && loginForm.get('username')?.invalid) {
+            <div class="error-message">
+              @if (loginForm.get('username')?.hasError('required')) {
+                <span>Имя пользователя обязательно для заполнения</span>
+              }
+              @if (loginForm.get('username')?.hasError('minlength')) {
+                <span>Минимальная длина — 3 символа</span>
+              }
+              @if (loginForm.get('username')?.hasError('maxlength')) {
+                <span>Максимальная длина — 15 символов</span>
+              }
+              @if (loginForm.get('username')?.hasError('pattern')) {
+                <span>Используйте только буквы, цифры и знак подчеркивания</span>
+              }
+            </div>
+          }
+
+          @if (authError()) {
+            <div class="error-message">
+              <span>{{ authError() }}</span>
+            </div>
+          }
+        </div>
+
+        <button 
+          type="submit" 
+          class="btn btn-primary" 
+          [disabled]="loginForm.invalid || isSubmitting()"
+        >
+          {{ isSubmitting() ? (isRegisterMode() ? 'Регистрация...' : 'Вход...') : (isRegisterMode() ? 'Создать аккаунт' : 'Войти') }}
+        </button>
+
+        <div class="toggle-mode-container" style="margin-top: 1.5rem; text-align: center;">
+          <a 
+            href="javascript:void(0)" 
+            (click)="toggleMode()" 
+            style="font-size: 0.9rem; color: var(--color-primary); cursor: pointer; text-decoration: underline;"
+          >
+            {{ isRegisterMode() ? 'Уже есть аккаунт? Войти' : 'Нет аккаунта? Зарегистрироваться' }}
+          </a>
+        </div>
+      </form>
+    </div>
+  </main>
+</div>

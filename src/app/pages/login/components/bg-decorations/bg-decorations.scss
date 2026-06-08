@@ -1,0 +1,265 @@
+@use '../../../../../styles/mixins' as *;
+
+:host {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.bg-decorations {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Базовые стили фоновых иконок */
+.bg-icon {
+  position: absolute;
+  background-color: var(--color-decor);
+  opacity: var(--opacity-decor);
+  filter: drop-shadow(0 0 6px var(--color-decor));
+  transition: opacity 0.3s ease, filter 0.3s ease;
+  
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+
+  &.icon-rocket { mask-image: url('/icons/rocket.svg'); -webkit-mask-image: url('/icons/rocket.svg'); }
+  &.icon-trophy { mask-image: url('/icons/trophy.svg'); -webkit-mask-image: url('/icons/trophy.svg'); }
+  &.icon-brain { mask-image: url('/icons/brain.svg'); -webkit-mask-image: url('/icons/brain.svg'); }
+  &.icon-atom { mask-image: url('/icons/atom.svg'); -webkit-mask-image: url('/icons/atom.svg'); }
+  &.icon-planet { mask-image: url('/icons/saturn.svg'); -webkit-mask-image: url('/icons/saturn.svg'); }
+  &.icon-question { mask-image: url('/icons/question1.svg'); -webkit-mask-image: url('/icons/question1.svg'); }
+  &.icon-flask { mask-image: url('/icons/flask.svg'); -webkit-mask-image: url('/icons/flask.svg'); }
+  &.icon-gears { mask-image: url('/icons/gears.svg'); -webkit-mask-image: url('/icons/gears.svg'); }
+  &.icon-microscope { mask-image: url('/icons/microscope.svg'); -webkit-mask-image: url('/icons/microscope.svg'); }
+  
+  &.icon-star-glow { mask-image: url('/icons/star-shine.svg'); -webkit-mask-image: url('/icons/star-shine.svg'); }
+  &.icon-star-fall { mask-image: url('/icons/star-fall-minimalistic.svg'); -webkit-mask-image: url('/icons/star-fall-minimalistic.svg'); }
+  &.icon-star-jump { mask-image: url('/icons/star-fall-minimalistic-2.svg'); -webkit-mask-image: url('/icons/star-fall-minimalistic-2.svg'); }
+  &.icon-star-4point { mask-image: url('/icons/star-alt-3.svg'); -webkit-mask-image: url('/icons/star-alt-3.svg'); }
+  &.icon-star-normal { mask-image: url('/icons/star.svg'); -webkit-mask-image: url('/icons/star.svg'); }
+}
+
+/* Размеры для разных типов звезд */
+.star-small { width: 18px; height: 18px; }
+.star-medium { width: 28px; height: 28px; }
+.star-large { width: 38px; height: 38px; }
+
+/* Центрированная композиция на левой половине экрана */
+.trophy-universe {
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  width: 700px;
+  height: 700px;
+  transform: translate(-50%, -50%);
+}
+
+/* Центральный огромный кубок */
+.central-trophy {
+  width: 450px;
+  height: 450px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.18;
+  filter: drop-shadow(0 0 18px var(--color-primary));
+  animation: pulseGlowStrong 8s ease-in-out infinite; 
+}
+
+/* Расширенные орбитальные элементы */
+.orbit-rocket {
+  width: 110px;
+  height: 110px;
+  top: 5%;
+  left: 5%;
+  transform: rotate(-15deg);
+  animation: floatSlow 8s ease-in-out infinite;
+}
+
+.orbit-planet {
+  width: 115px;
+  height: 115px;
+  top: 8%;
+  right: 5%;
+  transform: rotate(15deg);
+  animation: floatMedium 9s ease-in-out infinite;
+}
+
+.orbit-brain {
+  width: 105px;
+  height: 105px;
+  bottom: 8%;
+  right: 8%;
+  transform: rotate(5deg);
+  animation: floatSlow 7s ease-in-out infinite;
+}
+
+.orbit-question {
+  width: 95px;
+  height: 95px;
+  bottom: 5%;
+  left: 5%;
+  transform: rotate(-12deg);
+  animation: floatMedium 8s ease-in-out infinite;
+}
+
+/* Звезды ближней орбиты кубка */
+.orbit-star-1 { top: 48%; left: -4%; animation: twinkleSlow 4s infinite; }
+.orbit-star-2 { top: 20%; right: -4%; animation: twinkleFast 3.2s infinite; }
+.orbit-star-3 { bottom: 30%; right: -4%; animation: twinkleSlow 4.5s infinite; }
+.orbit-star-4 { bottom: 25%; left: -4%; animation: twinkleFast 3.8s infinite; }
+
+/* Вспомогательные элементы по углам вокруг формы входа */
+.right-atom {
+  width: 100px; height: 100px;
+  top: 10%;
+  left: 55%;
+  transform: rotate(45deg);
+  animation: floatMedium 11s ease-in-out infinite;
+}
+
+.right-microscope {
+  width: 90px; height: 90px;
+  top: 8%;
+  right: 4%;
+  transform: rotate(-8deg);
+  animation: floatSlow 8s ease-in-out infinite;
+}
+
+.right-gears {
+  width: 95px; height: 95px;
+  bottom: 12%;
+  left: 55%;
+  transform: rotate(20deg);
+  animation: floatMedium 10s ease-in-out infinite;
+}
+
+.right-flask {
+  width: 90px; height: 90px;
+  bottom: 8%;
+  right: 4%;
+  transform: rotate(15deg);
+  animation: floatSlow 9s ease-in-out infinite;
+}
+
+/* Звезды */
+/* Светящиеся звезды */
+.star-glow-1 { top: 5%; left: 20%; animation: twinkleSlow 4s infinite; }
+.star-glow-2 { bottom: 6%; left: 15%; animation: twinkleFast 3s infinite; }
+.star-glow-3 { top: 40%; left: 2%; animation: twinkleSlow 4.5s infinite; }
+.star-glow-4 { top: 4%; right: 15%; animation: twinkleFast 3.5s infinite; }
+.star-glow-5 { bottom: 5%; right: 15%; animation: twinkleSlow 5s infinite; }
+.star-glow-6 { top: 45%; right: 2%; animation: twinkleFast 4.2s infinite; }
+
+/* Падающие звезды */
+.star-fall-1 { top: 15%; left: 45%; animation: twinkleSlow 5s infinite; }
+.star-fall-2 { bottom: 12%; left: 45%; animation: twinkleFast 4s infinite; }
+.star-fall-3 { top: 8%; right: 45%; animation: twinkleSlow 4.5s infinite; }
+.star-fall-4 { bottom: 10%; right: 42%; animation: twinkleSlow 5.2s infinite; }
+.star-fall-5 { top: 22%; left: 2%; animation: twinkleFast 3.5s infinite; }
+
+/* Прыгающие звезды */
+.star-jump-1 { top: 5%; left: 30%; animation: twinkleFast 3s infinite; }
+.star-jump-2 { bottom: 6%; left: 30%; animation: twinkleSlow 6s infinite; }
+.star-jump-3 { top: 4%; right: 30%; animation: twinkleFast 4s infinite; }
+.star-jump-4 { bottom: 5%; right: 30%; animation: twinkleSlow 4.8s infinite; }
+.star-jump-5 { top: 55%; right: 45%; animation: twinkleFast 3.8s infinite; }
+
+/* Четырехконечные вспышки */
+.star-4p-1 { top: 15%; left: 8%; animation: twinkleSlow 5.5s infinite; }
+.star-4p-2 { bottom: 15%; left: 8%; animation: twinkleFast 3.2s infinite; }
+.star-4p-3 { top: 12%; right: 8%; animation: twinkleSlow 4s infinite; }
+.star-4p-4 { bottom: 16%; right: 8%; animation: twinkleFast 3.8s infinite; }
+.star-4p-5 { top: 25%; right: 45%; animation: twinkleSlow 5s infinite; }
+.star-4p-6 { bottom: 25%; right: 46%; animation: twinkleSlow 4.6s infinite; }
+.star-4p-7 { bottom: 45%; left: 42%; animation: twinkleFast 3s infinite; }
+
+/* Классические пятиконечные звезды */
+.star-norm-1 { top: 20%; left: 15%; animation: twinkleFast 4.2s infinite; }
+.star-norm-2 { bottom: 20%; left: 18%; animation: twinkleSlow 4.8s infinite; }
+.star-norm-3 { top: 18%; right: 18%; animation: twinkleFast 3s infinite; }
+.star-norm-4 { bottom: 18%; right: 18%; animation: twinkleSlow 5.2s infinite; }
+.star-norm-5 { top: 75%; left: 2%; animation: twinkleFast 3.6s infinite; }
+.star-norm-6 { bottom: 75%; right: 2%; animation: twinkleSlow 4.2s infinite; }
+.star-norm-7 { top: 48%; left: 48%; animation: twinkleFast 4.1s infinite; }
+
+/* Анимации движения и свечения */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0) rotate(-15deg); }
+  50% { transform: translateY(-12px) rotate(-10deg); }
+}
+
+@keyframes floatSlowTrophy {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0) rotate(0deg); }
+  50% { transform: translate(-50%, -50%) translateY(-15px) rotate(2deg); }
+}
+
+@keyframes floatMedium {
+  0%, 100% { transform: translateY(0) rotate(15deg); }
+  50% { transform: translateY(14px) rotate(8deg); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.12;
+    filter: drop-shadow(0 0 5px var(--color-primary));
+  }
+  50% {
+    opacity: 0.24;
+    filter: drop-shadow(0 0 14px var(--color-primary));
+  }
+}
+
+@keyframes pulseGlowStrong {
+  0%, 100% {
+    opacity: 0.18;
+    filter: drop-shadow(0 0 8px var(--color-primary));
+  }
+  50% {
+    opacity: 0.32;
+    filter: drop-shadow(0 0 22px var(--color-primary));
+  }
+}
+
+@keyframes twinkleSlow {
+  0%, 100% {
+    opacity: 0.08;
+    filter: drop-shadow(0 0 3px var(--color-primary));
+  }
+  50% {
+    opacity: 0.24;
+    filter: drop-shadow(0 0 9px var(--color-primary));
+  }
+}
+
+@keyframes twinkleFast {
+  0%, 100% {
+    opacity: 0.05;
+    filter: drop-shadow(0 0 2px var(--color-primary));
+  }
+  50% {
+    opacity: 0.28;
+    filter: drop-shadow(0 0 11px var(--color-primary));
+  }
+}
+
+@media (max-width: 968px) {
+  .bg-icon {
+    opacity: 0.05;
+  }
+  .trophy-universe {
+    display: none;
+  }
+}

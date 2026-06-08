@@ -1,0 +1,82 @@
+@use './variables' as *;
+
+/* Базовые стили карточек */
+.card {
+  background-color: var(--color-surface);
+  border-radius: $radius-lg;
+  box-shadow: $shadow-lg;
+  border: 1px solid var(--color-border);
+  padding: 2rem;
+}
+
+/* Элементы форм */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.form-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  color: var(--color-text-main);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-sm;
+  outline: none;
+  transition: border-color $transition-fast, box-shadow $transition-fast;
+
+  &::placeholder {
+    color: var(--color-text-muted);
+    opacity: 0.6;
+  }
+
+  &:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-light);
+  }
+
+  &.is-invalid {
+    border-color: var(--color-incorrect);
+    &:focus {
+      box-shadow: 0 0 0 3px var(--color-incorrect-bg);
+    }
+  }
+}
+
+/* Кнопки */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: $radius-sm;
+  transition: background-color $transition-fast, transform $transition-fast;
+  text-align: center;
+  width: 100%;
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.btn-primary {
+  color: var(--color-white);
+  background-color: var(--color-primary);
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-primary-hover);
+  }
+}

@@ -1,0 +1,55 @@
+.theme-toggle-btn {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 50%;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-main);
+  box-shadow: 0 4px 6px -1px var(--shadow-color), 0 2px 4px -2px var(--shadow-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 9999;
+  transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+
+  .theme-icon {
+    width: 1.35rem;
+    height: 1.35rem;
+    background-color: var(--color-text-main);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Параметры маски */
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+
+    &.icon-moon {
+      mask-image: url('/icons/moon.svg');
+      -webkit-mask-image: url('/icons/moon.svg');
+    }
+
+    &.icon-sun {
+      mask-image: url('/icons/sun.svg');
+      -webkit-mask-image: url('/icons/sun.svg');
+    }
+  }
+
+  &:hover {
+    transform: scale(1.05);
+    background-color: var(--color-bg);
+    .theme-icon {
+      transform: rotate(15deg);
+    }
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}

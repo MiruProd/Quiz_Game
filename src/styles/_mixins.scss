@@ -1,0 +1,24 @@
+@use './variables' as *;
+
+/* Стандартные брейкпоинты для адаптивной верстки */
+$breakpoint-phone: 480px;
+$breakpoint-tablet: 768px;
+
+@mixin phone {
+  @media (max-width: $breakpoint-phone) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+/* Flexbox-центровщик */
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
