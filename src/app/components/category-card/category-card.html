@@ -1,0 +1,17 @@
+<a [routerLink]="['/quiz', category().id]" class="category-card">
+  <div class="card-icon-wrapper">
+    <span class="category-icon" [class]="iconClass()"></span>
+  </div>
+  
+  <div class="card-content">
+    <h3 class="category-title">{{ category().title }}</h3>
+    <p class="category-description">{{ category().description }}</p>
+  </div>
+  
+  <div class="card-footer">
+    <span class="questions-count">
+      {{ category().questionsCount }} вопросов
+    </span>
+    <span class="arrow-icon">→</span>
+  </div>
+</a>
