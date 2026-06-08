@@ -34,21 +34,21 @@
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-position: center;
 
-  &.icon-rocket { mask-image: url('/icons/rocket.svg'); -webkit-mask-image: url('/icons/rocket.svg'); }
-  &.icon-trophy { mask-image: url('/icons/trophy.svg'); -webkit-mask-image: url('/icons/trophy.svg'); }
-  &.icon-brain { mask-image: url('/icons/brain.svg'); -webkit-mask-image: url('/icons/brain.svg'); }
-  &.icon-atom { mask-image: url('/icons/atom.svg'); -webkit-mask-image: url('/icons/atom.svg'); }
-  &.icon-planet { mask-image: url('/icons/saturn.svg'); -webkit-mask-image: url('/icons/saturn.svg'); }
-  &.icon-question { mask-image: url('/icons/question1.svg'); -webkit-mask-image: url('/icons/question1.svg'); }
-  &.icon-flask { mask-image: url('/icons/flask.svg'); -webkit-mask-image: url('/icons/flask.svg'); }
-  &.icon-gears { mask-image: url('/icons/gears.svg'); -webkit-mask-image: url('/icons/gears.svg'); }
-  &.icon-microscope { mask-image: url('/icons/microscope.svg'); -webkit-mask-image: url('/icons/microscope.svg'); }
+  &.icon-rocket { mask-image: url('^icons/rocket.svg'); -webkit-mask-image: url('^icons/rocket.svg'); }
+  &.icon-trophy { mask-image: url('^icons/trophy.svg'); -webkit-mask-image: url('^icons/trophy.svg'); }
+  &.icon-brain { mask-image: url('^icons/brain.svg'); -webkit-mask-image: url('^icons/brain.svg'); }
+  &.icon-atom { mask-image: url('^icons/atom.svg'); -webkit-mask-image: url('^icons/atom.svg'); }
+  &.icon-planet { mask-image: url('^icons/saturn.svg'); -webkit-mask-image: url('^icons/saturn.svg'); }
+  &.icon-question { mask-image: url('^icons/question1.svg'); -webkit-mask-image: url('^icons/question1.svg'); }
+  &.icon-flask { mask-image: url('^icons/flask.svg'); -webkit-mask-image: url('^icons/flask.svg'); }
+  &.icon-gears { mask-image: url('^icons/gears.svg'); -webkit-mask-image: url('^icons/gears.svg'); }
+  &.icon-microscope { mask-image: url('^icons/microscope.svg'); -webkit-mask-image: url('^icons/microscope.svg'); }
   
-  &.icon-star-glow { mask-image: url('/icons/star-shine.svg'); -webkit-mask-image: url('/icons/star-shine.svg'); }
-  &.icon-star-fall { mask-image: url('/icons/star-fall-minimalistic.svg'); -webkit-mask-image: url('/icons/star-fall-minimalistic.svg'); }
-  &.icon-star-jump { mask-image: url('/icons/star-fall-minimalistic-2.svg'); -webkit-mask-image: url('/icons/star-fall-minimalistic-2.svg'); }
-  &.icon-star-4point { mask-image: url('/icons/star-alt-3.svg'); -webkit-mask-image: url('/icons/star-alt-3.svg'); }
-  &.icon-star-normal { mask-image: url('/icons/star.svg'); -webkit-mask-image: url('/icons/star.svg'); }
+  &.icon-star-glow { mask-image: url('^icons/star-shine.svg'); -webkit-mask-image: url('^icons/star-shine.svg'); }
+  &.icon-star-fall { mask-image: url('^icons/star-fall-minimalistic.svg'); -webkit-mask-image: url('^icons/star-fall-minimalistic.svg'); }
+  &.icon-star-jump { mask-image: url('^icons/star-fall-minimalistic-2.svg'); -webkit-mask-image: url('^icons/star-fall-minimalistic-2.svg'); }
+  &.icon-star-4point { mask-image: url('^icons/star-alt-3.svg'); -webkit-mask-image: url('^icons/star-alt-3.svg'); }
+  &.icon-star-normal { mask-image: url('^icons/star.svg'); -webkit-mask-image: url('^icons/star.svg'); }
 }
 
 /* Размеры для разных типов звезд */
