@@ -13,7 +13,7 @@ export class AuthStore {
   private readonly platformId = inject(PLATFORM_ID);
 
   private readonly storageKey = 'quiz_user_session';
-  private readonly apiUrl = 'http://localhost:3000/users';
+  private readonly apiUrl = 'https://milesis-quiz-game-backend.hf.space/users';
 
   readonly currentUser = signal<User | null>(this.loadSession());
   readonly isAuthenticated = computed(() => !!this.currentUser());
