@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { authGuard, guestGuard } from './guards/auth.guard';
 import { questionsResolver } from './guards/questions.resolver';
+import { gameExitGuard } from './guards/game-exit.guard';
 
 export const routes: Routes = [
   {
@@ -26,6 +27,7 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/game-play/game-play').then((m) => m.GamePlay),
     title: 'Игра',
     canActivate: [authGuard],
+    canDeactivate: [gameExitGuard],
     resolve: { questions: questionsResolver },
   },
   {
