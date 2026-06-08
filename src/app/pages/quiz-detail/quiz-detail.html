@@ -1,1 +1,36 @@
-<p>quiz-detail works!</p>
+<div class="quiz-detail-page">
+  @if (category(); as cat) {
+    <div class="detail-card">
+      <div class="detail-header">
+        <a routerLink="/quizzes" class="btn-back">← Назад к списку</a>
+        <h1 class="detail-title">{{ cat.title }}</h1>
+      </div>
+
+      <div class="detail-body">
+        <p class="detail-description">{{ cat.description }}</p>
+        
+        <div class="info-grid">
+          <div class="info-item">
+            <span class="info-label">Количество вопросов:</span>
+            <span class="info-value">{{ cat.questionsCount }}</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Формат раунда:</span>
+            <span class="info-value">Один за другим с таймером</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-actions">
+        <a [routerLink]="['/quiz', cat.id, 'play']" class="btn btn-primary start-btn">
+          Начать викторину
+        </a>
+      </div>
+    </div>
+  } @else {
+    <div class="loading-state">
+      <span class="loader-spinner"></span>
+      <p>Загрузка деталей викторины...</p>
+    </div>
+  }
+</div>

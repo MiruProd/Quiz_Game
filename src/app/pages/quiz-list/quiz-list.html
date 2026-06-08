@@ -1,1 +1,17 @@
-<p>quiz-list works!</p>
+<div class="quiz-list-page">
+  <header class="list-header">
+    <h1 class="list-title">Выберите категорию</h1>
+    <p class="list-subtitle">Проверьте свои знания в одной из представленных тем викторины</p>
+  </header>
+
+  <main class="categories-grid">
+    @for (category of categories(); track category.id) {
+      <app-category-card [category]="category" />
+    } @empty {
+      <div class="loading-state">
+        <span class="loader-spinner"></span>
+        <p>Загрузка категорий...</p>
+      </div>
+    }
+  </main>
+</div>
