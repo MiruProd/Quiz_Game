@@ -31,13 +31,13 @@
     -webkit-mask-position: center;
 
     &.icon-moon {
-      mask-image: url('^icons/moon.svg');
-      -webkit-mask-image: url('^icons/moon.svg');
+      mask-image: url('icons/moon.svg');
+      -webkit-mask-image: url('icons/moon.svg');
     }
 
     &.icon-sun {
-      mask-image: url('^icons/sun.svg');
-      -webkit-mask-image: url('^icons/sun.svg');
+      mask-image: url('icons/sun.svg');
+      -webkit-mask-image: url('icons/sun.svg');
     }
   }
 
