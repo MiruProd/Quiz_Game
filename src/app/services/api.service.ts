@@ -10,7 +10,12 @@ export class ApiService {
   private readonly baseUrl = 'https://milesis-quiz-game-backend.hf.space';
 
   /* Выполнение GET запроса */
-  get<T>(path: string, params?: HttpParams): Observable<T> {
+  get<T>(
+    path: string,
+    params?:
+      | HttpParams
+      | { [param: string]: string | number | boolean | ReadonlyArray<string | number | boolean> },
+  ): Observable<T> {
     return this.http.get<T>(`${this.baseUrl}/${path}`, { params });
   }
 

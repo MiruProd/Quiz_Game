@@ -1,19 +1,18 @@
 import { Injectable, signal, computed, inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { User } from '../models/user.model';
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthStore {
-  private readonly http = inject(HttpClient);
+  private readonly api = inject(ApiService);
   private readonly platformId = inject(PLATFORM_ID);
 
   private readonly storageKey = 'quiz_user_session';
-  private readonly apiUrl = 'https://milesis-quiz-game-backend.hf.space/users';
 
   readonly currentUser = signal<User | null>(this.loadSession());
   readonly isAuthenticated = computed(() => !!this.currentUser());
@@ -21,7 +20,7 @@ export class AuthStore {
   login(username: string): Observable<User> {
     const cleanUsername = username.trim();
 
-    return this.http.get<User[]>(`${this.apiUrl}?username=${cleanUsername}`).pipe(
+    return this.api.get<User[]>('users', { username: cleanUsername }).pipe(
       switchMap((users) => {
         if (users.length > 0) {
           return of(users[0]);
@@ -43,7 +42,7 @@ export class AuthStore {
   register(username: string): Observable<User> {
     const cleanUsername = username.trim();
 
-    return this.http.get<User[]>(`${this.apiUrl}?username=${cleanUsername}`).pipe(
+    return this.api.get<User[]>('users', { username: cleanUsername }).pipe(
       switchMap((users) => {
         if (users.length > 0) {
           return throwError(
@@ -73,7 +72,7 @@ export class AuthStore {
           },
         };
 
-        return this.http.post<User>(this.apiUrl, newUser);
+        return this.api.post<User>('users', newUser);
       }),
       tap((user) => {
         this.currentUser.set(user);

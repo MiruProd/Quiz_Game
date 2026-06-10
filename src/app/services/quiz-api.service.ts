@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable, inject, signal } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ApiService } from './api.service';
@@ -9,6 +9,14 @@ import { Category, Question } from '../models/quiz.model';
 })
 export class QuizApi {
   private readonly api = inject(ApiService);
+
+  /* Хранилище результата последнего сыгранного раунда */
+  readonly activeResult = signal<{
+    score: number;
+    total: number;
+    categoryId: string;
+    timeSpent: string;
+  } | null>(null);
 
   /* Получение списка всех категорий */
   getCategories(): Observable<Category[]> {

@@ -110,7 +110,7 @@ export class GamePlay implements OnInit {
     const timeSpentFormatted = this.formatTime(timeSpentSec);
 
     // Временно сохраняем результаты игры в сервисе для страницы результатов
-    (this.quizApi as any).activeResult = signal({
+    this.quizApi.activeResult.set({
       score: this.score(),
       total: this.totalQuestions,
       categoryId: this.categoryId,
