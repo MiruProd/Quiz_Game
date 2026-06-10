@@ -1,1 +1,0 @@
-import{Ha as r,Ia as o,Na as n,ta as t}from"./chunk-ZXZE3UE4.js";var d=class a{static \u0275fac=function(e){return new(e||a)};static \u0275cmp=t({type:a,selectors:[["app-leaderboard"]],decls:2,vars:0,template:function(e,i){e&1&&(r(0,"p"),n(1,"leaderboard works!"),o())},encapsulation:2})};export{d as Leaderboard};

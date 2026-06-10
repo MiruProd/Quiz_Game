@@ -1,1 +1,0 @@
-import{Ha as n,Ia as m,Na as o,ta as t}from"./chunk-ZXZE3UE4.js";var p=class a{static \u0275fac=function(e){return new(e||a)};static \u0275cmp=t({type:a,selectors:[["app-game-play"]],decls:2,vars:0,template:function(e,s){e&1&&(n(0,"p"),o(1,"game-play works!"),m())},encapsulation:2})};export{p as GamePlay};

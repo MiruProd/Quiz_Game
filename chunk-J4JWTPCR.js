@@ -1,1 +1,0 @@
-import{Ha as n,Ia as a,Na as o,ta as s}from"./chunk-ZXZE3UE4.js";var l=class t{static \u0275fac=function(e){return new(e||t)};static \u0275cmp=s({type:t,selectors:[["app-results"]],decls:2,vars:0,template:function(e,i){e&1&&(n(0,"p"),o(1,"results works!"),a())},encapsulation:2})};export{l as Results};

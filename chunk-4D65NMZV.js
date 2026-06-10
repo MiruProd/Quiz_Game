@@ -1,1 +1,0 @@
-import{Ha as a,Ia as n,Na as o,ta as i}from"./chunk-ZXZE3UE4.js";var l=class t{static \u0275fac=function(e){return new(e||t)};static \u0275cmp=i({type:t,selectors:[["app-quiz-detail"]],decls:2,vars:0,template:function(e,p){e&1&&(a(0,"p"),o(1,"quiz-detail works!"),n())},encapsulation:2})};export{l as QuizDetail};
